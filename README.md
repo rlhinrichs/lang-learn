@@ -1,2 +1,2 @@
 # lang-learn
-Natural Language Processing: LLM &amp; Speech Synthesis Engineering
+🗣️ Natural Language Processing: LLM & Speech Synthesis Engineering
