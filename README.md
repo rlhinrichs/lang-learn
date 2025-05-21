@@ -29,14 +29,16 @@ Dependencies:
 - Cloud: 55 mins
 - GPUx2: 1 hr 17 min
 
-Instructions for edge computing deployment (Windows/Linux):
-git lfs install
-git clone https://huggingface.co/datasets/BI55/MedText
-pip install -r requirements_gpu.txt
+---  
 
-(PowerShell/CMD)
-set CUDA_VISIBLE_DEVICES=0,1 && python medical-diagnosis_gpu.py
-  ---> optionally: Get-Content .\logs\train_output.log -Wait
-(bash/WSL)
-CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py
-  ---> optionally: tail -f logs/medical-diagnosis_gpu.log
+Instructions for edge computing deployment (Windows/Linux):  
+  git lfs install  
+  git clone https://huggingface.co/datasets/BI55/MedText  
+  pip install -r requirements_gpu.txt  
+  
+(PowerShell/CMD)  
+  set CUDA_VISIBLE_DEVICES=0,1 && python medical-diagnosis_gpu.py  
+  ---> optionally: Get-Content .\logs\train_output.log -Wait  
+(bash/WSL)  
+  CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py  
+  ---> optionally: tail -f logs/medical-diagnosis_gpu.log  
