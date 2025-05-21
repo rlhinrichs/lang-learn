@@ -32,13 +32,13 @@ Dependencies:
 ---  
 
 Instructions for edge computing deployment (Windows/Linux):  
-  git lfs install  
-  git clone https://huggingface.co/datasets/BI55/MedText  
-  pip install -r requirements_gpu.txt  
+  `git lfs install`  
+  `git clone https://huggingface.co/datasets/BI55/MedText`  
+  `pip install -r requirements_gpu.txt`  
   
 (PowerShell/CMD)  
-  set CUDA_VISIBLE_DEVICES=0,1 && python medical-diagnosis_gpu.py  
-  ---> optionally: Get-Content .\logs\train_output.log -Wait  
+  `set CUDA_VISIBLE_DEVICES=0,1 && python medical-diagnosis_gpu.py`  
+  ---> optionally monitor: `Get-Content .\logs\train_output.log -Wait`  
 (bash/WSL)  
-  CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py  
-  ---> optionally: tail -f logs/medical-diagnosis_gpu.log  
+  `CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py`  
+  ---> optionally monitor: `tail -f logs/medical-diagnosis_gpu.log`  
