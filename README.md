@@ -19,7 +19,8 @@ Dependencies:
 ## Medical Diagnosis Generator // Generative AI (GenAI)  
 - medical-diagnosis.ipynb (standard CPU + single GPU)  
 - medical-diagnosis_gcp.ipynb (cloud platform)  
-- medical-diagnosis-gcp.md (to visualize on GitHub)  
+- medical-diagnosis-gcp.md (to visualize on GitHub)
+
 Dual-GPU files:  
 - import_llm.py (updatable for security patches)  
 - medical-diagnosis_gpu.py (to fine-tune the LLM)  
