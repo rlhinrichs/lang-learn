@@ -22,11 +22,12 @@ Dependencies:
 - medical-diagnosis-gcp.md (to visualize on GitHub)
 
 Dual-GPU files:  
-- import_llm.py (updatable for security patches)  
+- import_llm.py            (updatable for security patches)  
 - medical-diagnosis_gpu.py (to fine-tune the LLM)  
-- requirements_llm.txt (worked on PowerShell until I had to switch to Linux for FAISS implementation)  
-- test_query.py (optional offline tokenization)  
-- med_query.py (dual GPUs)  
+- requirements_llm.txt     (worked on PowerShell until I had to switch to Linux for FAISS implementation)  
+- test_query.py            (optional offline tokenization)  
+- med_query.py             (CLI script to accompany user prompt query)
+- requirements_rag.yml     (full conda Linux environment)
 
 **About:** This is an end-to-end AIOps project: the user provides a query consisting of a patient's symptoms and health status. The pipeline begins by loading Falcon-7B, a 7-billion parameter *Large Language Model (LLM)*, along with its pre-trained weights from Hugging Face. A tokenizer from Hugging Face's Transformers library is used to convert text into model-compatible input embeddings. To enable efficient fine-tuning on limited hardware, *Quantized Low-Rank Adapters (QLoRA)* reduce Falcon-7B’s precision from 16-bit to 4-bit, lowering memory requirements while preserving performance. Fine-tuning is then performed using a medical corpus ([BI55/MedText](https://huggingface.co/datasets/BI55/MedText)), allowing the system to support *Retrieval-Augmented Generation (RAG)* for domain-specific diagnostic reasoning. Our result is a proficient and appropriate medical diagnosis for a symptomatic patient, suggesting the nature of the injury and providing a recommended treatment plan. After the fine-tuned LLM is created, the full RAG implementation produces a fully offline model capable of answering questions to user input.  
 
