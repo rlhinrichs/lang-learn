@@ -41,7 +41,7 @@ The inference is the output (response) provided by the model in answer to a quer
 <center><h2>The Code:</h2>
 <hr style="width: 50%; border-color: black;"></center>
 
-Selected 'A100' runtime in GCP for this notebook. Rerunning again May 2025 to update dependencies. Updated output follows.
+Selected 'A100' runtime in GCP for this notebook. Rerunning again May 2025 to update dependencies.
 
 
 ```python
