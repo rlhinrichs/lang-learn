@@ -2,7 +2,7 @@
 
 # 🗣️ Natural Language Processing (NLP)
 Tools: Python, PyTorch, TensorFlow, Keras, NumPy, Pandas, Matplotlib, Sklearn, NLTK, LSI, GenSim, BERT, LogisticRegression, XGBoost, RandomForest, SVC / SVM, MLP, CNN, Hugging Face, Transformers, Falcon.7B, QLoRA, FAISS
-- data/Attention is All You Need.pdf (from [source](https://arxiv.org/abs/1706.03762)) <<--- "it all starts here" ♥
+- data/Attention is All You Need.pdf ([source](https://arxiv.org/abs/1706.03762)) <<--- "it all starts here" ♥
 
 Dependencies:
 - Python 3.10
