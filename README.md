@@ -48,7 +48,7 @@ where 'data split' represents the training/testing percentages, 'TES' represents
 
 The final run was fully offline and exhibited the best overall performance with a final epoch average Training Loss of 0.5091 and a total average Training Loss of 0.8257 in 43279.64 seconds. While the training time per epoch increased in this case, the tradeoff in stability and accuracy seems promising.  
 
-**Inference:** Pairing the fine-tuned Medical LLM capable of generating informed responses with a vector database for mapping word embeddings, we can create a full *Retrieval-Augmented Generation (RAG)* model to look up relevant data given a user's input query. `test_query.py` uses *[FAISS](https://github.com/facebookresearch/faiss) vector DB* to do this.
+**Inference:** Pairing the fine-tuned Medical LLM capable of generating informed responses with a vector database for mapping word embeddings, we can create a full *Retrieval-Augmented Generation (RAG)* model to look up relevant data given a user's input query. `test_query.py` uses *[FAISS](https://github.com/facebookresearch/faiss) vector DB* to do this.  
 
 My process is outlined below.  
 
@@ -57,7 +57,7 @@ My process is outlined below.
 Online setup actions:  
   `git lfs install`  
   `git clone https://huggingface.co/datasets/BI55/MedText`  
-  `CUDA_VISIBLE_DEVICES=0,1 python import_llm.py`
+  `CUDA_VISIBLE_DEVICES=0,1 python import_llm.py`  
 The rest were done offline:  
   `pip install -r requirements_gpu.txt` (before `import_llm.py`)  
   `CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py`  
