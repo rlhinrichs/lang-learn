@@ -16,7 +16,7 @@ Dependencies:
 ---  
 ---  
 
-## Medical Diagnosis Generator // Generative AI (GenAI)  
+## Medical Diagnosis Generator // Generative AI (GenAI) // RAG-LLM  
 - medical-diagnosis.ipynb (standard CPU + single GPU)  
 - medical-diagnosis_gcp.ipynb (cloud platform)  
 - medical-diagnosis-gcp.md (to visualize on GitHub)
@@ -25,9 +25,9 @@ Dual-GPU files:
 - import_llm.py            (updatable for security patches)  
 - medical-diagnosis_gpu.py (to fine-tune the LLM)  
 - requirements_llm.txt     (worked on PowerShell until I had to switch to Linux for FAISS implementation)  
-- test_query.py            (optional offline tokenization)  
+- test_query.py            (to build the vector DB embedding map)  
 - med_query.py             (CLI script to accompany user prompt query)
-- requirements_rag.yml     (full conda Linux environment)
+- conda-env.yml            (full conda Linux environment)
 
 **About:** This is an end-to-end AIOps project: the user provides a query consisting of a patient's symptoms and health status. The pipeline begins by loading Falcon-7B, a 7-billion parameter *Large Language Model (LLM)*, along with its pre-trained weights from Hugging Face. A tokenizer from Hugging Face's Transformers library is used to convert text into model-compatible input embeddings. To enable efficient fine-tuning on limited hardware, *Quantized Low-Rank Adapters (QLoRA)* reduce Falcon-7B’s precision from 16-bit to 4-bit, lowering memory requirements while preserving performance. Fine-tuning is then performed using a medical corpus ([BI55/MedText](https://huggingface.co/datasets/BI55/MedText)), allowing the system to support *Retrieval-Augmented Generation (RAG)* for domain-specific diagnostic reasoning. Our result is a proficient and appropriate medical diagnosis for a symptomatic patient, suggesting the nature of the injury and providing a recommended treatment plan. After the fine-tuned LLM is created, the full RAG implementation produces a fully offline model capable of answering questions to user input.  
 
@@ -61,5 +61,6 @@ Online setup actions:
 The rest were done offline:  
   `pip install -r requirements_gpu.txt` (before `import_llm.py`)  
   `CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py`  
+  `sudo mount -o remount,size=16G /dev/shm` (for offloading weights; sanity check `df -h /dev/shm`)  
   `CUDA_VISIBLE_DEVICES=0,1 && python test_query.py`  
   `CUDA_VISIBLE_DEVICES=0,1 && python med_query.py` (for CLI querying)  
