@@ -2,7 +2,7 @@
 
 # 🗣️ Natural Language Processing (NLP)
 Tools: Python, PyTorch, TensorFlow, Keras, NumPy, Pandas, Matplotlib, Sklearn, NLTK, LSI, GenSim, BERT, LogisticRegression, XGBoost, RandomForest, SVC / SVM, MLP, CNN, Hugging Face, Transformers, Falcon.7B, QLoRA, FAISS
-- data/Attention is All You Need.pdf (from [source](https://arxiv.org/abs/1706.03762)) <<--- _the_ basis of NLP and AI today ♥
+- data/Attention is All You Need.pdf (from [source](https://arxiv.org/abs/1706.03762)) <<--- "it all starts here" ♥
 
 Dependencies:
 - Python 3.10
@@ -46,9 +46,9 @@ Additionally, I wanted to test the dual-GPU edge computing approach using differ
 
 where 'data split' represents the training/testing percentages, 'TES' represents `TrainingArguments(per_device_train_batch_size=T, per_device_eval_batch_size=E, gradient_accumulation_steps=S)`. Both ‖∇‖ (L2 norm of the gradients) and η (learning rate) are extracted from the final training step of each experiment to monitor stability and convergence.  
 
-The final run was fully offline and exhibited the best overall performance with a Training Loss of 0.825661724 in 43279.64 seconds. While the training time per epoch increased in this case, the tradeoff in stability and accuracy seems promising.  
+The final run was fully offline and exhibited the best overall performance with a final epoch average Training Loss of 0.5091 and a total average Training Loss of 0.8257 in 43279.64 seconds. While the training time per epoch increased in this case, the tradeoff in stability and accuracy seems promising.  
 
-**Inference:** Pairing the fine-tuned Medical LLM capable of generating informed responses, we can create a full *Retrieval-Augmented Generation (RAG)* model to look up relevant data given a user's input query. We used a *FAISS vector DB* to map word embeddings between the query and the database. The RAG-tuned LLM will look up the most relevant answer and answer according to its knowledge base (the MedText corpus).  
+**Inference:** Pairing the fine-tuned Medical LLM capable of generating informed responses with a vector database for mapping word embeddings, we can create a full *Retrieval-Augmented Generation (RAG)* model to look up relevant data given a user's input query. `test_query.py` uses *[FAISS](https://github.com/facebookresearch/faiss) vector DB* to do this.
 
 My process is outlined below.  
 
@@ -61,6 +61,6 @@ Online setup actions:
 The rest were done offline:  
   `pip install -r requirements_gpu.txt` (before `import_llm.py`)  
   `CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py`  
-  `sudo mount -o remount,size=16G /dev/shm` (for offloading weights; sanity check `df -h /dev/shm`)  
+  `sudo mount -o remount,size=16G /dev/shm` (for offloading weights; sanity check `df -h /dev/shm`; am still toying with trying to bypass this need)  
   `CUDA_VISIBLE_DEVICES=0,1 && python test_query.py`  
   `CUDA_VISIBLE_DEVICES=0,1 && python med_query.py` (for CLI querying)  
