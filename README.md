@@ -61,6 +61,6 @@ Online setup actions:
 The rest were done offline:  
   `pip install -r requirements_gpu.txt` (before `import_llm.py`)  
   `CUDA_VISIBLE_DEVICES=0,1 python medical-diagnosis_gpu.py`  
-  `sudo mount -o remount,size=16G /dev/shm` (for offloading weights; sanity check `df -h /dev/shm`; am still toying with trying to bypass this need)  
+  `sudo mount -o remount,size=16G /dev/shm` (for offloading weights; sanity check `df -h /dev/shm`; am still toying with this)  
   `CUDA_VISIBLE_DEVICES=0,1 && python test_query.py`  
   `CUDA_VISIBLE_DEVICES=0,1 && python med_query.py` (for CLI querying)  
